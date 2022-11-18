@@ -5,10 +5,10 @@ const {
 } = process.env;
 
 module.exports = {
-  apps: [{
-    name: 'api-service',
-    script: './dist/app.js',
-  }],
+  // apps: [{
+  //   name: 'api-service',
+  //   script: './dist/app.js',
+  // }],
 
   deploy: {
     production: {
