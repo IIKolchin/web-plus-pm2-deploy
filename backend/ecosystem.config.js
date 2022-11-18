@@ -17,8 +17,8 @@ module.exports = {
       ref: DEPLOY_REF,
       repo: DEPLOY_REPO,
       path: DEPLOY_PATH,
-      'pre-deploy': `scp -a ./*.env ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH_ENV}`,
-      'post-deploy': 'npm i && npm run build',
+      'pre-deploy-local': `scp -a ./*.env ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH_ENV}`,
+      'post-deploy-local': 'npm i && npm run build',
     },
   },
 };
