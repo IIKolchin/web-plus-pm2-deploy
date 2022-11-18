@@ -12,7 +12,7 @@ module.exports = {
 
   deploy: {
     production: {
-      key: '/.ssh/id_ed25519.pub',
+      key: '/Users/apple/.ssh/id_ed25519.pub',
       user: DEPLOY_USER,
       host: DEPLOY_HOST,
       ref: DEPLOY_REF,
