@@ -1,6 +1,5 @@
 import jwt from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
-import { JWT_SECRET } from '../config';
 import UnauthorizedError from '../errors/unauthorized-error';
 
 interface JwtPayload {
@@ -16,7 +15,7 @@ const auth = (req: Request, res: Response, next: NextFunction) => {
     token = token.replace('Bearer ', '');
     let payload: JwtPayload | null = null;
 
-    payload = jwt.verify(token, JWT_SECRET) as JwtPayload;
+    payload = jwt.verify(token, process.env.JWT_SECRET!) as JwtPayload;
     req.user = payload;
     next();
   } catch (e) {
