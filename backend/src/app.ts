@@ -8,7 +8,7 @@ import { errors } from 'celebrate';
 import errorHandler from './middlewares/error-handler';
 import routes from './routes';
 
-// require('dotenv').config();
+require('dotenv').config({ path: '../.env' });
 
 const { PORT = 3000, DB_ADDRESS } = process.env;
 const app = express();

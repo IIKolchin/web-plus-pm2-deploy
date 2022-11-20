@@ -10,7 +10,7 @@ import BadRequestError from '../errors/bad-request-error';
 import NotFoundError from '../errors/not-found-error';
 import ConflictError from '../errors/conflict-error';
 
-// require('dotenv').config();
+require('dotenv').config({ path: '../../.env' });
 
 const { JWT_SECRET } = process.env;
 
