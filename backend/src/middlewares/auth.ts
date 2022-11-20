@@ -6,7 +6,7 @@ interface JwtPayload {
   _id: string
 }
 
-require('dotenv').config({ path: '../../.env' });
+require('dotenv').config({ path: `${__dirname}/./../../.env` });
 
 const { JWT_SECRET } = process.env;
 
