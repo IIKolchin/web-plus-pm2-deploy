@@ -6,18 +6,19 @@ import {
   NextFunction,
 } from 'express';
 import User from '../models/user';
-// import { JWT_SECRET } from '../config';
 import BadRequestError from '../errors/bad-request-error';
 import NotFoundError from '../errors/not-found-error';
 import ConflictError from '../errors/conflict-error';
 
 // require('dotenv').config();
 
+const { JWT_SECRET } = process.env;
+
 const login = (req: Request, res: Response, next: NextFunction) => {
   const { email, password } = req.body;
   return User.findUserByCredentials(email, password)
     .then((user) => {
-      const token = jwt.sign({ _id: user._id }, 'secret');
+      const token = jwt.sign({ _id: user._id }, JWT_SECRET as string);
       return res
         .cookie('jwt', token, {
 

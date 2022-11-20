@@ -6,6 +6,10 @@ interface JwtPayload {
   _id: string
 }
 
+// require('dotenv').config();
+
+const { JWT_SECRET } = process.env;
+
 const auth = (req: Request, res: Response, next: NextFunction) => {
   try {
     let token = req.cookies.jwt || req.headers.authorization;
@@ -15,7 +19,7 @@ const auth = (req: Request, res: Response, next: NextFunction) => {
     token = token.replace('Bearer ', '');
     let payload: JwtPayload | null = null;
 
-    payload = jwt.verify(token, 'secret') as JwtPayload;
+    payload = jwt.verify(token, JWT_SECRET as string) as JwtPayload;
     req.user = payload;
     next();
   } catch (e) {
