@@ -1,5 +1,4 @@
 import 'dotenv/config';
-
 import express from 'express';
 import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
@@ -8,11 +7,9 @@ import { errors } from 'celebrate';
 import errorHandler from './middlewares/error-handler';
 import routes from './routes';
 
-require('dotenv').config({ path: '../.env' });
-
-const { PORT = 3000, DB_ADDRESS } = process.env;
+const { PORT = 3000 } = process.env;
 const app = express();
-mongoose.connect(DB_ADDRESS as string);
+mongoose.connect('mongodb://localhost:27017/mestodb');
 
 // Только для локальных тестов. Не используйте это в продакшене
 // app.use(cors());
