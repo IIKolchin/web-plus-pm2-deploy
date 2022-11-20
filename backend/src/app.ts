@@ -13,18 +13,18 @@ require('dotenv').config();
 
 const { PORT = 3000 } = process.env;
 const app = express();
-mongoose.connect(process.env.DB_ADDRESS!);
+mongoose.connect('mongodb://localhost:27017/mestodb');
 
 // Только для локальных тестов. Не используйте это в продакшене
 // app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-// app.get('/crash-test', () => {
-//   setTimeout(() => {
-//     throw new Error('Сервер сейчас упадёт');
-//   }, 0);
-// });
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 app.use(routes);
 app.use(errors());
 app.use(errorHandler);
