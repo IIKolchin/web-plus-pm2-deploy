@@ -15,7 +15,7 @@ const auth = (req: Request, res: Response, next: NextFunction) => {
     token = token.replace('Bearer ', '');
     let payload: JwtPayload | null = null;
 
-    payload = jwt.verify(token, process.env.JWT_SECRET!) as JwtPayload;
+    payload = jwt.verify(token, 'secret') as JwtPayload;
     req.user = payload;
     next();
   } catch (e) {

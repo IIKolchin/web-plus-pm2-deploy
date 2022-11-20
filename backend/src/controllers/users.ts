@@ -17,7 +17,7 @@ const login = (req: Request, res: Response, next: NextFunction) => {
   const { email, password } = req.body;
   return User.findUserByCredentials(email, password)
     .then((user) => {
-      const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET!);
+      const token = jwt.sign({ _id: user._id }, 'secret');
       return res
         .cookie('jwt', token, {
 
