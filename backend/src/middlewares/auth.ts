@@ -8,7 +8,7 @@ interface JwtPayload {
 
 require('dotenv').config({ path: '../../.env' });
 
-const { JWT_SECRET } = process.env;
+// const { JWT_SECRET } = process.env;
 
 const auth = (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -19,7 +19,7 @@ const auth = (req: Request, res: Response, next: NextFunction) => {
     token = token.replace('Bearer ', '');
     let payload: JwtPayload | null = null;
 
-    payload = jwt.verify(token, JWT_SECRET as string) as JwtPayload;
+    payload = jwt.verify(token, 'secret') as JwtPayload;
     req.user = payload;
     next();
   } catch (e) {
